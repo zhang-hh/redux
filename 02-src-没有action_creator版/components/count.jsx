@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {createIncrementAction,createDecrementAction} from '../redux/action_creator'
+import {DECREMENT,INCREMENT} from '../redux/action_type'
 class Count extends Component {
 	//加法
 	increment = () =>{
@@ -8,7 +8,7 @@ class Count extends Component {
 	//	  2.更改状态
 	// 	const number  = this.state.number;
 	// 	this.setState({number: number + value*1})
-		this.props.store.dispatch(createIncrementAction(value*1))
+		this.props.store.dispatch({type:INCREMENT,data:value*1})
 	};
 	//减法
 	decrement = () =>{
@@ -17,7 +17,7 @@ class Count extends Component {
 		//	  2.更改状态
 		// const number  = this.state.number;
 		// this.setState({number: number - value*1})
-		this.props.store.dispatch(createDecrementAction(value*1))
+		this.props.store.dispatch({type:DECREMENT,data:value*1})
 
 	};
 	//只在奇数时相加
@@ -27,7 +27,7 @@ class Count extends Component {
 		//	  2.更改状态
 		const number  = this.props.store.getState();
 		if (number % 2 === 1){
-			this.props.store.dispatch(createIncrementAction(value*1))
+			this.props.store.dispatch({type:INCREMENT,data:value*1})
 		}
 	};
 	//延迟相加
@@ -37,7 +37,7 @@ class Count extends Component {
 		// console.log(typeof this.refs.countNumber.value) 所以在下边上要加上*1将字符串转换为数字类型
 		//	  2.更改状态
 		setTimeout(()=>{
-			this.props.store.dispatch(createIncrementAction(value*1))
+			this.props.store.dispatch({type:INCREMENT,data:value*1})
 		},1000)
 	};
 	render() {
