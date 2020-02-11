@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-//渲染容器组件
-import Count from "./container/count_container";
+import Count from "./components/count";
 class App extends Component {
 	render() {
+		const store = this.props.store;
 		return (
 			<div>
-				<Count/>
+				<Count store={store}/>
 			</div>
 		);
 	}

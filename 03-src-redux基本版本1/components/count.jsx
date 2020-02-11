@@ -1,6 +1,5 @@
-//该组件是UI组件,不能使用任何的redux API
 import React, {Component} from 'react';
-//import {createIncrementAction,createDecrementAction} from '../redux/action_creator';
+import {createIncrementAction,createDecrementAction} from '../redux/action_creator'
 class Count extends Component {
 	//加法
 	increment = () =>{
@@ -9,7 +8,7 @@ class Count extends Component {
 	//	  2.更改状态
 	// 	const number  = this.state.number;
 	// 	this.setState({number: number + value*1})
-	// 	this.props.store.dispatch(createIncrementAction(value*1))
+		this.props.store.dispatch(createIncrementAction(value*1))
 	};
 	//减法
 	decrement = () =>{
@@ -18,7 +17,7 @@ class Count extends Component {
 		//	  2.更改状态
 		// const number  = this.state.number;
 		// this.setState({number: number - value*1})
-		// this.props.store.dispatch(createDecrementAction(value*1))
+		this.props.store.dispatch(createDecrementAction(value*1))
 
 	};
 	//只在奇数时相加
@@ -26,10 +25,10 @@ class Count extends Component {
 		//    1.获取所选的值
 		const value = this.refs.countNumber.value;
 		//	  2.更改状态
-		// const number  = this.props.store.getState();
-		// if (number % 2 === 1){
-		// 	this.props.store.dispatch(createIncrementAction(value*1))
-		// }
+		const number  = this.props.store.getState();
+		if (number % 2 === 1){
+			this.props.store.dispatch(createIncrementAction(value*1))
+		}
 	};
 	//延迟相加
 	incrementAsync =() =>{
@@ -37,15 +36,14 @@ class Count extends Component {
 		const value = this.refs.countNumber.value;
 		// console.log(typeof this.refs.countNumber.value) 所以在下边上要加上*1将字符串转换为数字类型
 		//	  2.更改状态
-		// setTimeout(()=>{
-		// 	this.props.store.dispatch(createIncrementAction(value*1))
-		// },1000)
+		setTimeout(()=>{
+			this.props.store.dispatch(createIncrementAction(value*1))
+		},1000)
 	};
 	render() {
-		console.log(this.props)
 		return (
 			<div>
-				<h2>现在计数为:xxx</h2>
+				<h2>现在计数为:{this.props.store.getState()}</h2>
 				<select ref='countNumber'>
 					<option value="1">1</option>
 					<option value="2">2</option>
