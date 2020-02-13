@@ -7,5 +7,7 @@ import {createStore,applyMiddleware} from 'redux';
 import reducer from './reducers';
 //引入redux-thunk用于异步编程
 import thunk from 'redux-thunk';
+//引入composeWithDevTools,用于调试redux代码
+import {composeWithDevTools} from 'redux-devtools-extension';
 //在创建store要传一个参数--reducer
-export default createStore(reducer,applyMiddleware(thunk));
+export default createStore(reducer,composeWithDevTools(applyMiddleware(thunk)));
