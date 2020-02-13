@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {createIncrementAction,
 	createDecrementAction,
 	createIncrementAsyncAction
-} from '../redux/action-creators/count-action_creator'
+} from '../redux/action_creator'
 /*步骤:
 *   1.引入UI组件
 *   2.从react-redux中引入connect connect()(UI组件)*/
@@ -23,9 +23,8 @@ import {createIncrementAction,
 /*UI组件应该从从容器组件接收的props
 *   1.redux的状态
 *   2.操作状态的方法*/
-//这里的state是一个对象,保存了所有的状态 {number: ,person:[]}
 export default connect(
-	(state) => ({number:state.number,persons:state.persons}), //映射UI组件的状态
+	(state) => ({number:state}), //映射UI组件的状态
 	//传递操作状态的方法
 	//完整版写法 --- 传函数
 	/*dispatch => ({

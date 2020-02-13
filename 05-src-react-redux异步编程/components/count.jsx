@@ -42,7 +42,6 @@ class Count extends Component {
 		return (
 			<div>
 				<h2>现在计数为:{this.props.number}</h2>
-				<h2>下方组件的总人数是:{this.props.persons.length}</h2>
 				<select ref='countNumber'>
 					<option value="1">1</option>
 					<option value="2">2</option>
