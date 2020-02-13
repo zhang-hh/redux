@@ -35,10 +35,8 @@ class Count extends Component {
 		const value = this.refs.countNumber.value;
 		// console.log(typeof this.refs.countNumber.value) 所以在下边上要加上*1将字符串转换为数字类型
 		//	  2.更改状态
-		setTimeout(()=>{
-			this.props.increment(value*1)
-		},1000)
-
+		//异步编程
+		this.props.incrementAsync(value*1,2000)
 	};
 	render() {
 		return (

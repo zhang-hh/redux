@@ -2,7 +2,10 @@
 //UI组件不能使用任何的redux API
 import Count from "../components/count";
 import {connect} from 'react-redux';
-import {createIncrementAction,createDecrementAction} from '../redux/action_creator'
+import {createIncrementAction,
+	createDecrementAction,
+	createIncrementAsyncAction
+} from '../redux/action_creator'
 /*步骤:
 *   1.引入UI组件
 *   2.从react-redux中引入connect connect()(UI组件)*/
@@ -33,6 +36,7 @@ export default connect(
 	//connect也可以传递一个回调函数和一个对象
 	{
 		increment:createIncrementAction,
-		decrement:createDecrementAction
+		decrement:createDecrementAction,
+		incrementAsync:createIncrementAsyncAction
 	}
 )(Count)
